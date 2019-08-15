@@ -37,7 +37,7 @@ https://youtu.be/xmuVqtxwowA
 
 ![screenshot](screenshots/Thrifty_Movies_Seller_Details.jpeg)
 
-![screenshot](screenshots/Thrifty_Movies_Loggedin+Dropdown.jpeg)
+![screenshot](screenshots/Thrifty_Movies_LoggedIn+Dropdown.jpeg)
 
 ![screenshot](screenshots/Thrifty_Movies_Search.jpeg)
 
