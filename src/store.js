@@ -33,10 +33,9 @@ let reducer = (state, action) => {
   }
   if (action.type === 'REMOVE_FROM_CART') {
     const copyCart = [...state.cart];
-    copyCart.splice(action.payload, 1);
     return {
       ...state,
-      cart: copyCart,
+      cart: action.payload,
     };
   }
   if (action.type === 'CHECKOUT') {

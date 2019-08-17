@@ -35235,10 +35235,22 @@ class Cart extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(...args) {
     super(...args);
 
-    _defineProperty(this, "handleRemoveFromCart", idx => {
+    _defineProperty(this, "handleRemoveFromCart", async (item, idx) => {
+      console.log('Cart item to remove', item);
+      const data = JSON.stringify(item);
+      let response = await fetch('/removefromcart', {
+        method: 'POST',
+        body: data,
+        credentials: 'include',
+        headers: {
+          'content-type': 'application/json'
+        }
+      });
+      const responseJson = await response.json();
+      const newCart = responseJson.cart;
       this.props.dispatch({
         type: 'REMOVE_FROM_CART',
-        payload: idx
+        payload: newCart
       });
     });
 
@@ -35281,7 +35293,7 @@ class Cart extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         style: 'currency',
         currency: 'CAD'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Button, {
-        onClick: () => this.handleRemoveFromCart(idx)
+        onClick: () => this.handleRemoveFromCart(item, idx)
       }, "Remove item")));
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TFoot, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Total"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.cart.map(item => Number(item.price)).reduce((a, b) => a + b, 0).toLocaleString('en-CA', {
       style: 'currency',
@@ -36638,9 +36650,8 @@ let reducer = (state, action) => {
 
   if (action.type === 'REMOVE_FROM_CART') {
     const copyCart = [...state.cart];
-    copyCart.splice(action.payload, 1);
     return { ...state,
-      cart: copyCart
+      cart: action.payload
     };
   }
 

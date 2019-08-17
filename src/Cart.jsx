@@ -123,10 +123,20 @@ function formatImage(format) {
 }
 
 class Cart extends Component {
-  handleRemoveFromCart = idx => {
+  handleRemoveFromCart = async (item, idx) => {
+    console.log('Cart item to remove', item);
+    const data = JSON.stringify(item);
+    let response = await fetch('/removefromcart', {
+      method: 'POST',
+      body: data,
+      credentials: 'include',
+      headers: { 'content-type': 'application/json' },
+    });
+    const responseJson = await response.json();
+    const newCart = responseJson.cart;
     this.props.dispatch({
       type: 'REMOVE_FROM_CART',
-      payload: idx,
+      payload: newCart,
     });
   };
   handleCheckout = async evt => {
@@ -188,7 +198,9 @@ class Cart extends Component {
                         })}
                       </td>
                       <td>
-                        <Button onClick={() => this.handleRemoveFromCart(idx)}>
+                        <Button
+                          onClick={() => this.handleRemoveFromCart(item, idx)}
+                        >
                           Remove item
                         </Button>
                       </td>

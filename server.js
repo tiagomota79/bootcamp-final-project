@@ -181,6 +181,20 @@ app.post('/checkout', upload.none(), (req, res) => {
   res.send(JSON.stringify({ cart: cart }));
 });
 
+app.post('/removefromcart', upload.none(), (req, res) => {
+  console.log("**** I'm in the post removefromcart endpoint");
+  console.log('this is the removefromcart body', req.body);
+  let username = req.cookies.username;
+  const item = req.body;
+  const userCart = cart[username];
+  for (let i = 0; i < userCart.length; i++) {
+    if (userCart[i].id === item.id) {
+      userCart.splice(i, 1);
+    }
+  }
+  res.send(JSON.stringify({ cart: userCart }));
+});
+
 app.post('/additem', upload.single('imgPath'), (req, res) => {
   console.log('*** inside add item');
   console.log('body', req.body);
