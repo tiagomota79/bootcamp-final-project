@@ -26415,7 +26415,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34953,8 +34953,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AddItem_jsx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./AddItem.jsx */ "./src/AddItem.jsx");
 /* harmony import */ var _Cart_jsx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Cart.jsx */ "./src/Cart.jsx");
 /* harmony import */ var _Checkout_jsx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Checkout.jsx */ "./src/Checkout.jsx");
-/* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./store.js */ "./src/store.js");
+/* harmony import */ var _Loading_jsx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Loading.jsx */ "./src/Loading.jsx");
+/* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./store.js */ "./src/store.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -35050,11 +35052,11 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
   render() {
     if (!this.state.finishedLoading) {
-      console.log('App store if notLoading', _store_js__WEBPACK_IMPORTED_MODULE_12__["default"].getState());
-      return 'Loading';
+      console.log('App store if notLoading', _store_js__WEBPACK_IMPORTED_MODULE_13__["default"].getState());
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Loading_jsx__WEBPACK_IMPORTED_MODULE_12__["default"], null);
     }
 
-    console.log('App store if Loading', _store_js__WEBPACK_IMPORTED_MODULE_12__["default"].getState());
+    console.log('App store if Loading', _store_js__WEBPACK_IMPORTED_MODULE_13__["default"].getState());
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navbar_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
       path: "/login",
       exact: true,
@@ -35801,6 +35803,43 @@ const mapStateToProps = state => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps)(ItemDetails));
+
+/***/ }),
+
+/***/ "./src/Loading.jsx":
+/*!*************************!*\
+  !*** ./src/Loading.jsx ***!
+  \*************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+
+const Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+const Image = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].img`
+  height: 150px;
+`;
+
+class Loading extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  render() {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Wrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Image, {
+      src: "/imgs/spinner.gif"
+    }));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Loading);
 
 /***/ }),
 

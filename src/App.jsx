@@ -10,6 +10,7 @@ import SellerDetails from './SellerDetails.jsx';
 import AddItem from './AddItem.jsx';
 import Cart from './Cart.jsx';
 import Checkout from './Checkout.jsx';
+import Loading from './Loading.jsx';
 import store from './store.js';
 
 class App extends Component {
@@ -94,7 +95,7 @@ class App extends Component {
   render() {
     if (!this.state.finishedLoading) {
       console.log('App store if notLoading', store.getState());
-      return 'Loading';
+      return <Loading />;
     }
     console.log('App store if Loading', store.getState());
     return (
