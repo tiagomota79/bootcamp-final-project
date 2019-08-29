@@ -1,5 +1,5 @@
 {
-  "name": "webpack-react-tutorial",
+  "name": "thrifty-movies",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "build": "webpack --mode production"
   },
   "keywords": [],
-  "author": "Jacques Le Normand",
+  "author": "Tiago Mota",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.2.2",
