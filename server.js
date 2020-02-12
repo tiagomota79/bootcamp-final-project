@@ -54,6 +54,10 @@ app.use('/', express.static('build')); // Needed for the HTML and JS files
 app.use('/', express.static('public')); // Needed for local assets
 
 // Your endpoints go after this line
+app.get('/', function(req, res) {
+  res.redirect('/session');
+});
+
 app.post('/login', upload.none(), (req, res) => {
   console.log("**** I'm in the login endpoint");
   console.log('this is the parsed body', req.body);
